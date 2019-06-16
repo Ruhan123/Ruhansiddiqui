@@ -1,0 +1,27 @@
+#first of all there will have import matplotlib library function
+yo
+u know that matplotlib is visualizing the data set  its very important libraray
+#start code here
+
+import numpy as np
+x,y=np.loadtxt('C:\\Users\\Ruhan siddiqui\\Desktop\\xyz.txt',delimiter=',',unpack=True)
+plt.plot(x,y,label='rs')         
+plt.xlabel('x')
+plt.ylabel('y')
+plt.legend()
+plt.show()
+
+# second graph with out using csv file
+ #code here
+ 
+ x=[1,2,3]
+y=[5,7,4]
+x1=[1,2,3]
+y1=[10,14,12]
+plt.plot(x,y, label='first line for')
+plt.plot(x1,y1, label='second line for')
+plt.xlabel('plot')
+plt.ylabel('necessary')
+plt.title('ruhan \nprogress')  #you can change the name
+plt.legend()
+plt.show()
