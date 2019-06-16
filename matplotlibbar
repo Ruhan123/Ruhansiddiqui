@@ -1,0 +1,42 @@
+# you can draw easily bar graph in matplotlib
+code here
+# you can change the value of x and y according to condition
+x=[1,2,3,4]
+y=[4,5,7,8]
+x1=[1.5,2.5,3.5,4.5]
+y1=[5,6,8,9]
+plt.bar(x1,y1, label='bar1',color='r')
+plt.bar(x,y, label='bars',color='g')
+plt.xlabel('x-axis')
+plt.ylabel('y-axis')
+plt.title('ruhan progress graph')
+plt.legend()
+plt.show()
+
+#stack plot
+code here
+
+d=[1,2,3]
+s=[8,9,10]
+e=[2,3,1]
+w=[6,7,8]
+plt.plot([],[],color='m',label='s')
+plt.plot([],[],color='c',label='e')
+plt.plot([],[],color='r',label='w')
+plt.stackplot(d,s,e,w,colors=['m','c','r','k'])
+plt.xlabel('x')
+plt.ylabel('y')
+plt.show()
+
+#scattreing plot 
+you know this very important plot for specially machine learner
+#code here
+
+import matplotlib.pyplot as plt
+a=[1,2,3,4,5,6,7,8]
+b=[2,3,4,5,6,8,9,10]
+plt.scatter(a,b,label='xyz',marker='*')
+plt.xlabel('training size')
+plt.ylabel('accuracy')
+plt.title('intersting think')
+plt.show()
