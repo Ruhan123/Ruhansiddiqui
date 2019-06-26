@@ -1,0 +1,35 @@
+#first of all i would like to tell you  you know that neural network is important topic of deep learning
+# according to  this code you can set your number of hidden layers and input layers
+# according to you can select activation function like segmoid ,relu etc
+#  those person learns neural network he knows that 
+#activation function decide whether a neuran should activated or not 
+# Create first network with Keras
+ 
+ 
+ # code start here
+ 
+from keras.models import Sequential
+from keras.layers import Dense
+import numpy
+# fix random seed for reproducibility
+seed = 7
+numpy.random.seed(seed)
+# load pima indians dataset
+dataset = numpy.loadtxt("C:\\Users\\Ruhan Siddiqui\\Documents\\rs.csv", delimiter=",")
+# split into input (X) and output (Y) variables
+X = dataset[:,0:8]
+Y = dataset[:,8]
+# create model
+model = Sequential()
+model.add(Dense(12, input_dim=8, init='uniform', activation='relu'))
+model.add(Dense(6, init='uniform', activation='relu'))
+model.add(Dense(1, init='uniform', activation='sigmoid'))
+# Compile model
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+# Fit the model
+model.fit(X, Y, epochs=150, batch_size=10,  verbose=2)
+# calculate predictions
+predictions = model.predict(X)
+# round predictions
+rounded = [round(x[0]) for x in predictions]
+print(rounded)
