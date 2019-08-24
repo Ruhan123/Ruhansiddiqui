@@ -1,0 +1,94 @@
+
+# data preprocessing 
+step-1-import libraries
+step-2-import dataset
+step-3-taking care missing data
+step-4-spliting dataset into train and test
+step-5-feature scaling
+
+
+
+#importing libraries
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+#importing data set
+d=pd.read_csv("C:\\Users\\Ruhan Siddiqui\\Documents\\RS-RA.csv")
+
+d.head()
+#indexing 
+X=d.iloc[:,1:].values
+
+y=d.iloc[:,0].values
+
+#take care of missing data
+from sklearn.impute import SimpleImputer
+om_imputer=SimpleImputer()
+Y=y.reshape(-1,1)
+Y=om_imputer.fit_transform(Y)
+
+#dataset splitting into train and test
+from sklearn.model_selection import train_test_split
+X_train,X_test,y_train,y_test=train_test_split(X,y,
+test_size=0.33,
+random_state=42)
+
+#feature scaling
+
+State = {'up': 1,'delhi': 2} 
+  
+# traversing through dataframe 
+# Gender column and writing 
+# values where key matches 
+d.State = [State[item] for item in d.State] 
+print(d)
+
+City = {'kanpur': 1,'unnao': 2,'raibareli':3,'fatehpur':4,'lucknow':5,'ghatampur':6,'kannauj':7,'rasoolabad':8,'itava':9,'masvanpur':10,'khadepur':11,'banaras':12,'agra':13,'ayodhya':14,'bhavpur':15,'farukhabad':16} 
+  
+# traversing through dataframe 
+# Gender column and writing 
+# values where key matches 
+d.City = [City[ite] for ite in d.City] 
+print(d) 
+
+Vehicle = {'car': 1,'bike': 2,'truck':3,'tracktor':4,'bus':5,'auto':6} 
+  
+# traversing through dataframe 
+# Gender column and writing 
+# values where key matches 
+d.Vehicle = [Vehicle[i] for i in d.Vehicle] 
+print(d) 
+
+#fiiting and prediction
+
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split, KFold, cross_val_score, GridSearchCV
+from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, BaggingClassifier, ExtraTreesClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
+
+npX=np.array(X_train).copy()
+npY=np.array(y_train).reshape(-1,1).copy()
+
+
+clf_rf=RandomForestClassifier()
+clf_et=ExtraTreesClassifier()
+clf_bc=BaggingClassifier()
+clf_ada=AdaBoostClassifier()
+clf_dt=DecisionTreeClassifier()
+clf_lr=LogisticRegression()
+clf_svm=SVC()
+
+Classifiers = ['RandomForest', 'ExtraTrees', 'Bagging', 'AdaBoost', 'DecisionTree', 'LogisticRegression', 'SVM']
+scores = []
+models = [clf_rf, clf_et, clf_bc, clf_ada, clf_dt, clf_lr, clf_svm]
+for model in models:
+    score = cross_val_score(model, npX, npY, scoring='accuracy', cv=10, n_jobs = -1).mean()
+    scores.append(score)
+    
+    mode=pd.DataFrame(scores, index=Classifier, columns['score'].sort_values(by = 'score', ascending='False'
+
+
+#complete code
